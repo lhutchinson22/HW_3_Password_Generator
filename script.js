@@ -8,26 +8,30 @@ function writePassword() {
 
   passwordText.value = password;
 
-  // the lenth of password uder chooses
-  var length = passwordLengthChoice;
+  function generatePassword() {
+    // the lenth of password user chooses
+    var length = passwordLengthChoice;
 
-  //the compilation of all the answers chosen
-  var userPromptOptions =
-    charTypeLower + charTypeUpper + charTypeNums + charTypeSpecial;
+    //WHEN prompted for the length of the password
+    var passwordLengthChoice = prompt("How long would you like your password?");
 
-  //WHEN prompted for the length of the password
-  var passwordLengthChoice = prompt("How long would you like your password?");
+    //WHEN prompted for character types to include in the password
+    var charTypeLower = prompt("Lowercase?");
+    var charTypeUpper = prompt("Uppercase?");
+    var charTypeNums = prompt("Numbers?");
+    var charTypeSpecial = prompt("Special Characters?");
 
-  //WHEN prompted for character types to include in the password
-  var charTypeLower = prompt("Lowercase?");
-  var charTypeUpper = prompt("Uppercase?");
-  var charTypeNums = prompt("Numbers?");
-  var charTypeSpecial = prompt("Special Characters?");
+    //the compilation of all the answers chosen
+    var userPromptOptions =
+      charTypeLower + charTypeUpper + charTypeNums + charTypeSpecial;
+    console.log(userPromptOptions);
 
-  for (var i = 0, n = passwordLengthChoice.length; i < length; i++) {
-    password += userPromptOptions.charAt(Math.floor(Math.random() * n));
+    // a for loop to take in the length of the password and generate a random string
+    for (var i = 0, n = passwordLengthChoice.length; i < length; i++) {
+      password += userPromptOptions.charAt(Math.floor(Math.random() * n));
+    }
+    return password;
   }
-  return password;
 }
 
 // Add event listener to generate button
